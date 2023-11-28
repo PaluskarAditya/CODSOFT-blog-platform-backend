@@ -1,0 +1,56 @@
+@host = http://localhost:8080
+
+GET {{host}}
+
+###
+
+POST {{host}}/api/user/login
+Content-Type: application/json
+
+{
+  "uname": "adityap",
+  "pass": "aditya2004"
+}
+
+###
+
+POST {{host}}/api/user/register
+Content-Type: application/json
+
+###
+POST {{host}}/api/blogs/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.NjU2MzAxN2FjYTE3ZjRmNmRhNDg2YWRm.NlCzaAowpnFYpcsIlb-GUX7Edi0Gyv0NDxmR5yMDEDc
+
+{
+  "author": "aditya paluskar",
+  "text":  "Under the canvas of the starry night, where the universe unfolds its secrets, a cosmic ballet takes place. The night sky becomes a tapestry of glittering diamonds, each star telling a story of distant galaxies and celestial wonders. As the moon casts its gentle glow, the world below is hushed in reverence. The night becomes a sanctuary for contemplation, where dreams take flight amidst the constellations. Gazing into the vastness of the cosmos, one is reminded of the infinitesimal nature of earthly worries. The night becomes a bridge between the tangible and the intangible, a portal to realms beyond our comprehension. Each twinkle in the firmament is a whisper from the cosmos, a reminder of the grandeur that exists beyond our earthly bounds. In the silence of the starry night, the soul finds solace, and the imagination takes flight on the wings of shooting stars. It's a celestial dance, a timeless spectacle that invites us to ponder the mysteries of the universe and our place within it.",
+  "title": "Whispers of the Starry Night",
+  "img1": "https://images.unsplash.com/photo-1488866022504-f2584929ca5f?q=80&w=1462&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "category": "Nature"
+}
+
+###
+GET {{host}}/api/blogs/random
+Content-Type: application/json
+
+###
+GET {{host}}/api/getblog/65635dd57f12b2f79328ab07
+Content-Type: application/json
+
+###
+GET {{host}}/api/blogs/random/5
+Content-Type: application/json
+
+###
+GET {{host}}/api/blogs
+Content-Type: application/json
+
+###
+POST {{host}}/api/blogs/update/65635dd57f12b2f79328ab07
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.NjU2MzAxN2FjYTE3ZjRmNmRhNDg2YWRm.NlCzaAowpnFYpcsIlb-GUX7Edi0Gyv0NDxmR5yMDEDc
+
+{
+  "title": "Embracing Change: A Journey of Self-Discovery"
+}
