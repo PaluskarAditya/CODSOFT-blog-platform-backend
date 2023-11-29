@@ -232,11 +232,12 @@ app.post('/api/users/update/:id', auth, async (req, res) => {
 // @POST -> add comment to a post
 app.post('/api/blogs/comments/add/:commid', auth, async (req, res) => {
   try {
-    const { id } = req.id;
+    const id = req.id;
+    console.log(id);
     const { commid } = req.params;
     const { comm, username } = req.body;
 
-    const comment = await new Comment({
+    const comment = await Comment({
       user_id: id,
       blog_id: commid,
       comment: comm,
@@ -244,8 +245,8 @@ app.post('/api/blogs/comments/add/:commid', auth, async (req, res) => {
     });
 
     if (comment) {
-      comment.save();
-      res.status(204).json(comment);
+      await comment.save();
+      res.status(200).json(comment);
     } else {
       res.status(500).json({err: "internal server error, please try again"});
     }
