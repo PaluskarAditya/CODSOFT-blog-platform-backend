@@ -234,18 +234,17 @@ app.post('/api/blogs/comments/add/:commid', auth, async (req, res) => {
   try {
     const { id } = req.id;
     const { commid } = req.params;
-    const { comm } = req.body;
-
-    const usr = await User.findById(id).select("-password");
+    const { comm, username } = req.body;
 
     const comment = await new Comment({
       user_id: id,
       blog_id: commid,
       comment: comm,
-      username: usr.username
+      username
     });
 
     if (comment) {
+      comment.save();
       res.status(204).json(comment);
     } else {
       res.status(500).json({err: "internal server error, please try again"});
