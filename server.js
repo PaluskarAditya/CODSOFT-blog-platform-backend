@@ -270,4 +270,18 @@ app.get('/api/blogs/comments/:id', async (req, res) => {
   }
 })
 
+app.delete('/api/blogs/comments/remove/:id', auth, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const del = await Comment.findByIdAndDelete(id);
+    if (!del) {
+      res.json(del);
+    } else {
+      res.json({err: "error in deleting post"});
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+})
+
 app.listen(8080, console.log('Listening on 8080'));

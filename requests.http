@@ -8,8 +8,8 @@ POST {{host}}/api/user/login
 Content-Type: application/json
 
 {
-  "uname": "steve",
-  "pass": "steve1234"
+  "uname": "aditya",
+  "pass": "aditya2004"
 }
 
 ###
@@ -67,3 +67,8 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.NjU2NDhlNjU2YTMyNDk0YjFjYThlMjU3.edzTJh5spEa
   "comm": "very nice post",
   "username": "steve"
 }
+
+###
+DELETE {{host}}/api/blogs/comments/remove/65672ef4ce957601fe692595
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.NjU2MzAxN2FjYTE3ZjRmNmRhNDg2YWRm.NlCzaAowpnFYpcsIlb-GUX7Edi0Gyv0NDxmR5yMDEDc
