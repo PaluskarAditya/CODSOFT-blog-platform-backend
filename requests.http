@@ -54,3 +54,6 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.NjU2MzAxN2FjYTE3ZjRmNmRhNDg2YWRm.NlCzaAowpnF
 {
   "title": "Embracing Change: A Journey of Self-Discovery"
 }
+
+### 
+GET {{host}}/api/blogs/comments/65635dd57f12b2f79328ab07

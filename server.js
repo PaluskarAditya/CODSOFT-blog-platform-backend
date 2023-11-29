@@ -7,6 +7,7 @@ const auth = require('./authMiddleware');
 const bcrypt = require('bcrypt'); ``
 const conn = require('./db');
 const jwt = require('jsonwebtoken');
+const Comment = require('./commentModel');
 require('dotenv').config();
 
 app.use(express.json({ limit: '10mb' }));
@@ -224,6 +225,47 @@ app.post('/api/users/update/:id', auth, async (req, res) => {
       res.status(200).json(user);
     }
   } catch (error) {   
+    console.log(error.message);
+  }
+});
+
+// @POST -> add comment to a post
+app.post('/api/blogs/comments/add/:commid', auth, async (req, res) => {
+  try {
+    const { id } = req.id;
+    const { commid } = req.params;
+    const { comm } = req.body;
+
+    const usr = await User.findById(id).select("-password");
+
+    const comment = await new Comment({
+      user_id: id,
+      blog_id: commid,
+      comment: comm,
+      username: usr.username
+    });
+
+    if (comment) {
+      res.status(204).json(comment);
+    } else {
+      res.status(500).json({err: "internal server error, please try again"});
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+})
+
+// @GET -> get all comments on a specifc blog
+app.get('/api/blogs/comments/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const comments = await Comment.find({ blog_id: id });
+    if (!comments) {
+      res.json({err: "no comments found"})
+    } else {
+      res.status(200).json(comments);
+    }
+  } catch (error) {
     console.log(error.message);
   }
 })
